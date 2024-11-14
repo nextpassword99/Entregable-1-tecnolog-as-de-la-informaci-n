@@ -1,46 +1,63 @@
 # Proyecto Cajero Automático - Registro de Clientes y Login
 
-Este proyecto simula un sistema básico de registro de clientes y login en un cajero automático. El sistema permite registrar clientes con un código de tarjeta y un pin, y luego autenticar a los clientes mediante su código de tarjeta y pin en un proceso de login.
+Este proyecto simula un cajero automático básico donde puedes registrar clientes, autenticarte con un código de tarjeta y PIN, y realizar operaciones como consultar saldo, retirar o depositar dinero.
 
 ## Requerimientos
 
-El programa realiza las siguientes funcionalidades:
+Este programa ofrece las siguientes funcionalidades:
 
-1. Registrar una cantidad de clientes determinada por el usuario.
-2. Permitir que los clientes se autentiquen mediante su código de tarjeta y pin.
-3. Limitar los intentos de login a 3, con mensaje de error si se excede el límite de intentos.
+1. Registrar varios clientes, solicitando sus datos personales, código de tarjeta y PIN.
+2. Permitir que los clientes se autentiquen con su código de tarjeta y PIN en un proceso de login.
+3. Limitar los intentos de login a 3, mostrando un mensaje de error si se excede el límite.
+4. Permitir al usuario realizar varias operaciones dentro del cajero automático una vez que haya iniciado sesión:
+   - Consultar saldo.
+   - Retirar dinero.
+   - Depositar dinero.
+   - Ver historial de transacciones.
 
 ## Descripción del Código
 
-1. **Registro de Clientes**:
-
-   - Se solicita al usuario que ingrese los datos básicos de cada cliente, como nombre, apellidos, celular, email, código de tarjeta y pin.
-   - Los datos de cada cliente se almacenan en una lista de diccionarios (`clientes`), donde cada cliente tiene un identificador único (`id`), saldo inicial de 0 y un historial vacío.
+1. **Registrar Clientes**:
+   - El programa pide el número de clientes a registrar y luego solicita los siguientes datos para cada cliente:
+     - Nombre
+     - Apellidos
+     - Celular
+     - Email
+     - Código de tarjeta (debe ser único)
+     - PIN (de  4 dígitos)
+   - Los datos de cada cliente se almacenan en una lista (`clientes`), donde cada cliente tiene un identificador único (`id`), saldo inicial de 0 y un historial vacío.
 
 2. **Login**:
-   - El usuario puede intentar ingresar sus datos de login (código de tarjeta y pin) hasta 3 veces.
-   - Si los datos coinciden con los registros de algún cliente, el login es exitoso y se muestra un mensaje de bienvenida.
-   - Si el usuario excede los 3 intentos fallidos, el programa termina mostrando un mensaje de error.
+   - El cliente se autentica ingresando su código de tarjeta y PIN.
+   - El programa permite hasta 3 intentos fallidos antes de cerrarse.
+   - Si el login es exitoso, se da la bienvenida al cliente y se permiten realizar operaciones.
+
+3. **Operaciones**:
+   - Una vez autenticado, el cliente puede realizar las siguientes operaciones:
+     - Consultar su saldo.
+     - Retirar dinero (si tiene saldo suficiente).
+     - Depositar dinero (solo cantidades positivas).
+     - Ver su historial de transacciones.
+   - Las transacciones (depósitos y retiros) se registran en el historial de cada cliente.
 
 ## Flujo del Programa
 
-1. El programa solicita cuántos clientes desea registrar.
-2. Luego, para cada cliente, se piden los siguientes datos:
+1. El programa pide cuántos clientes registrarás.
+2. Para cada cliente, solicita:
    - Nombre
    - Apellidos
    - Celular
    - Email
    - Código de tarjeta
-   - Pin
-3. Después de registrar a todos los clientes, el programa permite al usuario realizar un login ingresando su código de tarjeta y pin.
-4. Si el login es exitoso, se muestra un mensaje de bienvenida con el nombre del cliente.
-5. Si se exceden 3 intentos fallidos de login, el programa termina y muestra un mensaje de error.
+   - PIN
+3. Después de registrar a todos los clientes, el programa permite al usuario iniciar sesión ingresando su código de tarjeta y PIN.
+4. Si el login es exitoso, el cliente puede realizar varias operaciones dentro del cajero.
+5. Si se exceden 3 intentos fallidos, el programa finaliza con un mensaje de error.
 
-### Cómo ejecutar
+## Cómo ejecutar el programa
 
 1. Clona el repositorio o descarga el archivo `main.py`.
-2. Ejecuta el archivo Python usando tu interprete (se recomienda usar Python 3).
+2. Ejecuta el archivo Python con tu intérprete de Python 3.
 
 ```bash
   python main.py
-```
